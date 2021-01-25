@@ -1,7 +1,13 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {
+  useDispatch,
+  /*useSelector*/
+} from "react-redux";
 import RouteConfig from "./routes";
-import { fetchStoreData, selectStoreData } from "./store/shop.reducer";
+import {
+  fetchStoreData,
+  /*selectStoreData*/
+} from "./store/shop.reducer";
 import "./App.css";
 
 function App() {
