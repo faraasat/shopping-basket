@@ -18,11 +18,11 @@ const CardComponent: React.FC<ICardComponent> = ({ Ico, heading, detail }) => {
             flexDirection: "column",
           }}
         >
-            <Icon component={Ico} />
-          <Typography gutterBottom variant="h5" component="h2">
+            <Icon component={Ico} className='card-component-card__icon' />
+          <Typography gutterBottom variant="h5" component="h2" className='card-component-card__heading'>
             {heading}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" className='card-component-card__detail'>
             {detail}
           </Typography>
         </CardContent>

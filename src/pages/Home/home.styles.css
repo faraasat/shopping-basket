@@ -7,13 +7,39 @@
 }
 
 .home-page .home-page__cards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .home-page .home-page__cards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.home-page .home-page__cards-card1 .card-component-card__icon {
+  color: lightblue;
+}
+
+.home-page .home-page__cards-card1 .card-component-card__heading {
+  color: lightblue;
+}
+
+.home-page .home-page__cards-card2 .card-component-card__icon {
+  color: pink;
+}
+
+.home-page .home-page__cards-card2 .card-component-card__heading {
+  color: pink;
+}
+
+.home-page .home-page__cards-card3 .card-component-card__icon {
+  color: lightgreen;
+}
+
+.home-page .home-page__cards-card3 .card-component-card__heading {
+  color: lightgreen;
 }
