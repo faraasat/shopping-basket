@@ -1,0 +1,58 @@
+.contact-card-component-card-alignment {
+  margin: 10px 0px;
+  width: 350px;
+  box-sizing: border-box;
+  transition: all 0.5s ease-in-out !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.contact-card-component-card-alignment .contact-card-component-card__icon-base {
+  background: linear-gradient(
+    130deg,
+    rgb(196, 196, 196),
+    rgb(255, 255, 255) 70%
+  );
+  padding: 50px;
+  border: 7px double rgb(230, 138, 96);
+  border-radius: 100%;
+  transition: all 0.5s ease-in-out !important;
+}
+
+.contact-card-component-card-alignment
+  .contact-card-component-card__icon-base
+  img {
+  transition: all 0.5s ease-in-out !important;
+}
+
+.contact-card-component-card-alignment
+  .contact-card-component-card__icon-base:hover {
+  transform: scale(1.08);
+}
+
+.contact-card-component-card-alignment
+  .contact-card-component-card__icon-base:hover
+  img {
+  transform: scale(1.08);
+  filter: brightness(85%);
+}
+
+.contact-card-component-card-alignment .contact-card-component-card__heading {
+  margin-top: 18px;
+  font-family: "Pacifico", cursive;
+  font-size: 2.4vw;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0px 0px 5px black;
+}
+
+.contact-card-component-card-alignment .contact-card-component-card__detail {
+  font-family: "Luckiest Guy", cursive;
+  text-align: center;
+  font-size: 1.1vw;
+  font-weight: lighter;
+  color: rgb(255, 138, 43);
+}

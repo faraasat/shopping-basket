@@ -5,6 +5,10 @@ import "./home.styles.css";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import HomeIcon from "@material-ui/icons/Home";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
+import ContactCardComponent from "../../components/ContactCard/contact-card.component";
+import Chat from "../../assets/chat.png";
+import Email from "../../assets/email.png";
+import Live from "../../assets/live.png";
 
 const HomeComponent = () => {
   return (
@@ -34,6 +38,36 @@ const HomeComponent = () => {
                 detail="Tired of waiting, calling and tracking for product? We are here to make your deliveries on time!"
               />
             </span>
+          </div>
+        </Container>
+      </div>
+      <div className="home-page__bg">
+        <h1>Lets get Started!</h1>
+        <Container>
+          <p>
+            In this world you cannot trust anyone but we are here to help you.
+            We will give you 7-days guarantee with easy return😊.
+          </p>
+        </Container>
+      </div>
+      <div className="home-page__contact">
+        <Container>
+          <div className="home-page__contact-alignment">
+            <ContactCardComponent
+              Ico={Email}
+              heading="Email Us"
+              detail="You can email us at example@email.com anytime and we will always be there to help you!"
+            />
+            <ContactCardComponent
+              Ico={Chat}
+              heading="24/7 Live Chat"
+              detail="Have a nice and high quality chat with us. We are always eager to solve your problems!"
+            />
+            <ContactCardComponent
+              Ico={Live}
+              heading="Customer Support"
+              detail="Guess what you can call us any time for support. We give our customers world class support!"
+            />
           </div>
         </Container>
       </div>

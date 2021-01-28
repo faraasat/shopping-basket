@@ -43,3 +43,51 @@
 .home-page .home-page__cards-card3 .card-component-card__heading {
   color: lightgreen;
 }
+
+.home-page .home-page__bg {
+  background: linear-gradient(
+      270deg,
+      rgba(0, 183, 255, 0.25),
+      rgba(255, 166, 0, 0.25),
+      rgba(94, 255, 0, 0.25)
+    ),
+    url("../../assets/background-bg.jpg") no-repeat;
+  background-position: top center !important;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 390px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home-page .home-page__bg h1 {
+  margin-block: 0.2em !important;
+  font-family: "Pacifico", cursive;
+  color: rgb(130, 198, 238);
+  font-weight: bold;
+  font-size: 6vw;
+}
+
+.home-page .home-page__bg p {
+  margin-block: 0.2em !important;
+  font-family: "Luckiest Guy", cursive;
+  color: aliceblue;
+  font-size: 2vw;
+  text-align: center;
+}
+
+.home-page .home-page__contact {
+  padding: 50px 0px;
+  background: linear-gradient(150deg, rgb(240, 198, 163),
+  rgb(182, 222, 255));
+}
+
+.home-page .home-page__contact-alignment {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

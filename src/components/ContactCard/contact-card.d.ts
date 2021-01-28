@@ -1,4 +1,4 @@
-export interface ICardComponent {
+export interface IContactCard {
   Ico: any;
   heading: string;
   detail: string;
