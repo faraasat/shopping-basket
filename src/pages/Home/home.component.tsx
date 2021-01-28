@@ -71,6 +71,9 @@ const HomeComponent = () => {
           </div>
         </Container>
       </div>
+      <footer className="home-page__footer">
+        <h1>Copyright &copy; 2021 Shopping Basket. All Right Reserved.</h1>
+      </footer>
     </section>
   );
 };
