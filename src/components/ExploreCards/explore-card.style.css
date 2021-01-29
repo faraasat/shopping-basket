@@ -1,0 +1,55 @@
+.explore-card-btn-wrappers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.explore-card-btn-wrappers a {
+  transition: all 0.2s linear;
+  background-color: rgb(233, 233, 233);
+  margin: 0px 7px;
+  border-radius: 100%;
+  padding: 13px;
+  transition: all 0.5s linear;
+}
+
+.explore-card-btn-wrappers a svg {
+  transition: all 0.5s linear;
+  font-size: 30px;
+}
+
+.explore-card-btn-wrappers a:nth-child(1) svg {
+  color: rgb(255, 89, 89);
+}
+
+.explore-card-btn-wrappers a:nth-child(2) svg {
+  color: green;
+}
+
+.explore-card-btn-wrappers a:nth-child(3) svg {
+  color: rgb(92, 144, 255);
+}
+
+.explore-card-btn-wrappers a:nth-child(4) svg {
+  color: orange;
+}
+
+.explore-card-btn-wrappers a:hover svg {
+  color: rgb(233, 233, 233);
+}
+
+.explore-card-btn-wrappers a:nth-child(1):hover {
+  background-color: rgb(255, 89, 89);
+}
+
+.explore-card-btn-wrappers a:nth-child(2):hover {
+  background-color: green;
+}
+
+.explore-card-btn-wrappers a:nth-child(3):hover {
+  background-color: rgb(92, 144, 255);
+}
+
+.explore-card-btn-wrappers a:nth-child(4):hover {
+  background-color: orange;
+}
