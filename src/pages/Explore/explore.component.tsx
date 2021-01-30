@@ -12,11 +12,18 @@ const ExploreComponent = () => {
 
   return (
     <section className="explore-page-section-alignment">
-      <h1>Explore World</h1>
       <Container>
         <div className="explore-page-card-alignment">
           {data.map((datum: IStoreData) => {
-            return <ExploreCardComponent key={datum.unique_id} />;
+            return (
+              <ExploreCardComponent
+                key={datum.unique_id}
+                title={datum.product_name}
+                Img={datum.product_image_url.split("|")[0]}
+                details={datum.product_description}
+                id={datum.unique_id}
+              />
+            );
           })}
         </div>
       </Container>

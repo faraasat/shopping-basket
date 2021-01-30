@@ -5,20 +5,27 @@ import {
   Theme,
   createStyles,
 } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Badge,
+  MenuItem,
+  Menu,
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import AppsIcon from "@material-ui/icons/Apps";
+import ExploreIcon from "@material-ui/icons/Explore";
+import { Icon } from "@material-ui/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -196,7 +203,8 @@ export default function NavbarComponent() {
                 textDecoration: "none",
               }}
             >
-              Home
+              <FontAwesomeIcon icon={faHome} />
+              &nbsp;Home
             </Link>
             <Link
               to={"/explore"}
@@ -207,7 +215,20 @@ export default function NavbarComponent() {
                 marginLeft: 10,
               }}
             >
-              Explore
+              <Icon component={ExploreIcon} style={{ fontSize: 19 }} />
+              &nbsp;Explore
+            </Link>
+            <Link
+              to={"/categories"}
+              style={{
+                color: "#fff",
+                fontWeight: "bold",
+                textDecoration: "none",
+                marginLeft: 10,
+              }}
+            >
+              <Icon component={AppsIcon} style={{ fontSize: 19 }} />
+              &nbsp;Categories
             </Link>
           </div>
           <div className={classes.search}>

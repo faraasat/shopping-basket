@@ -5,7 +5,6 @@
 }
 
 .explore-card-btn-wrappers a {
-  transition: all 0.2s linear;
   background-color: rgb(233, 233, 233);
   margin: 0px 7px;
   border-radius: 100%;
@@ -52,4 +51,54 @@
 
 .explore-card-btn-wrappers a:nth-child(4):hover {
   background-color: orange;
+}
+
+.explore-card__alignment {
+  transition: all 0.5s ease-in;
+}
+
+.explore-card__alignment .explore-card__card-img {
+  transition: all 0.5s ease-in;
+}
+
+.explore-card__alignment:hover .explore-card__card-img {
+  transform: scale(1.4) rotate(15deg);
+  filter: brightness(30%);
+}
+
+.explore-card__card-title {
+  font-family: "Pacifico", cursive;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* cursor: crosshair; */
+}
+
+.explore-card__card-img {
+  height: 300px !important;
+  width: 400px !important;
+}
+
+.explore-card__card-details {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.explore-card__card-hover-effect {
+  display: none;
+  transition: all 1s ease-in !important;
+}
+
+.explore-card__alignment:hover .explore-card__card-hover-effect {
+  position: absolute;
+  top: 30%;
+  transform: translate(12%, -60%) rotate(20deg);
+  margin: 0 auto;
+  display: block;
+  color: whitesmoke;
+  font-family: "Potta One", serif;
+  font-size: 47px;
 }
