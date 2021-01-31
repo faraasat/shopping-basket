@@ -10,8 +10,6 @@ import ShoppingBg2 from "../../assets/shopping-bg2.jpg";
 import ShoppingBg3 from "../../assets/shopping-bg3.jpg";
 import ShoppingBg5 from "../../assets/shopping-bg5.jpg";
 import "./carousel.styles.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
 import { MDBBtn } from "mdbreact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";

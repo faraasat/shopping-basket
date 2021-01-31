@@ -1,0 +1,17 @@
+.item-details__alignment {
+    margin-top: 50px;
+}
+
+.item-details-inner__alignment {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.item-details-inner__alignment .item-details-inner__item {
+    width: 50%;
+}
+
+.item-details-inner__alignment .carousel img {
+    height: 550px !important;
+}

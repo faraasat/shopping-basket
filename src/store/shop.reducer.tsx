@@ -49,7 +49,11 @@ export const ShopSlice = createSlice({
     storeData: initialStoreData,
     storeLoadingState: false,
   },
-  reducers: {},
+  reducers: {
+    getData(state, action): any {
+      return { data: state.storeData, loading: state.storeLoadingState };
+    },
+  },
   extraReducers: {
     [fetchStoreData.fulfilled]: (state, action) => {
       console.log(state, action);
@@ -67,7 +71,7 @@ export const ShopSlice = createSlice({
   },
 });
 
-// export const {} = ShopSlice.actions;
+export const { getData } = ShopSlice.actions;
 
 export const selectStoreData = (state: any) => ({
   data: state.shopData.storeData,
