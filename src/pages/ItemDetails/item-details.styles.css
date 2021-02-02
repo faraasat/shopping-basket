@@ -4,7 +4,7 @@
 
 .item-details-inner__alignment {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-evenly;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .item-details-inner__alignment .carousel img {
-  height: 550px !important;
+  height: 420px !important;
 }
 
 .item-details-inner__item .carousel {
@@ -106,6 +106,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .item-details-inner__item-cart {
@@ -135,6 +136,7 @@
   font-family: "Pacifico", cursive;
   width: 140px;
   font-size: 23px;
+  cursor: default;
 }
 
 .item-details-inner__item-cart
@@ -202,6 +204,38 @@
 .item-details-inner__item-cart
   .item-details-inner__item-cart__btn
   button:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.item-details-inner__item-buy {
+  width: 70%;
+}
+
+.item-details-inner__item-buy button {
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #f09819 51%,
+    #ff512f 100%
+  );
+  margin: 20px;
+  width: 100%;
+  padding: 11px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  font-size: 20px;
+  border: none;
+  outline: none;
+}
+
+.item-details-inner__item-buy button:hover {
   background-position: right center;
   color: #fff;
   text-decoration: none;

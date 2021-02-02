@@ -14,7 +14,10 @@ import PlusIcon from "@material-ui/icons/Add";
 import MinusIcon from "@material-ui/icons/Remove";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartPlus,
+  faShoppingBasket,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ItemDetailsComponent = () => {
   const { exploreItemId } = useParams();
@@ -26,6 +29,11 @@ const ItemDetailsComponent = () => {
   const handleMinus = (itemNumber: number) => {
     if (itemNumber === 1) return;
     setItemNumber(itemNumber - 1);
+  };
+
+  const handleAddCart = () => {
+    console.log(itemNumber);
+    setItemNumber(1);
   };
 
   return (
@@ -73,7 +81,7 @@ const ItemDetailsComponent = () => {
                           <button onClick={() => setItemNumber(itemNumber + 1)}>
                             <Icon component={PlusIcon} />
                           </button>
-                          <input type="number" value={itemNumber} />
+                          <input type="number" value={itemNumber} readOnly />
                           <button
                             onClick={() => handleMinus(Number(itemNumber))}
                           >
@@ -81,10 +89,17 @@ const ItemDetailsComponent = () => {
                           </button>
                         </div>
                         <div className="item-details-inner__item-cart__btn">
-                          <button>
-                            Add To Cart&nbsp;&nbsp;<FontAwesomeIcon icon={faCartPlus} />
+                          <button onClick={() => handleAddCart()}>
+                            Add To Cart&nbsp;&nbsp;
+                            <FontAwesomeIcon icon={faCartPlus} />
                           </button>
                         </div>
+                      </div>
+                      <div className="item-details-inner__item-buy">
+                        <button>
+                          Buy Now!&nbsp;&nbsp;
+                          <FontAwesomeIcon icon={faShoppingBasket} />
+                        </button>
                       </div>
                     </div>
                   </div>
