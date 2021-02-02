@@ -10,12 +10,23 @@ import { useParams } from "react-router-dom";
 import { selectStoreData } from "../../store/shop.reducer";
 import "./item-details.styles.css";
 import HomeIcon from "@material-ui/icons/ArrowForward";
+import PlusIcon from "@material-ui/icons/Add";
+import MinusIcon from "@material-ui/icons/Remove";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
 const ItemDetailsComponent = () => {
   const { exploreItemId } = useParams();
   const { data, loading } = useSelector(selectStoreData);
+  const [itemNumber, setItemNumber] = useState<number>(1);
 
   if (loading) return <h1>Loading...</h1>;
+
+  const handleMinus = (itemNumber: number) => {
+    if (itemNumber === 1) return;
+    setItemNumber(itemNumber - 1);
+  };
 
   return (
     <div className="item-details__alignment">
@@ -56,6 +67,26 @@ const ItemDetailsComponent = () => {
                         })}
                       </MDBCarouselInner>
                     </MDBCarousel>
+                    <div className="item-details-inner__item-checkout">
+                      <div className="item-details-inner__item-cart">
+                        <div className="item-details-inner__item-cart__calc">
+                          <button onClick={() => setItemNumber(itemNumber + 1)}>
+                            <Icon component={PlusIcon} />
+                          </button>
+                          <input type="number" value={itemNumber} />
+                          <button
+                            onClick={() => handleMinus(Number(itemNumber))}
+                          >
+                            <Icon component={MinusIcon} />
+                          </button>
+                        </div>
+                        <div className="item-details-inner__item-cart__btn">
+                          <button>
+                            Add To Cart&nbsp;&nbsp;<FontAwesomeIcon icon={faCartPlus} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div className="item-details-inner__details">
                     <p className="item-details-inner__details-name">
@@ -84,10 +115,10 @@ const ItemDetailsComponent = () => {
                       <span>Availability: </span>
                       {value.product_available_inventory}
                     </p>
-                    <p className="item-details-inner__details-rating">
+                    {/* <p className="item-details-inner__details-rating">
                       <span>Ratings: </span>
                       {value.product_rating}
-                    </p>
+                    </p> */}
                     <p className="item-details-inner__details-model">
                       <span>Model Number: </span>
                       {value.product_model_number
@@ -100,7 +131,11 @@ const ItemDetailsComponent = () => {
                     </p>
                     <p className="item-details-inner__details-contents">
                       <span>Product Contents: </span>
-                      {value.product_contents}
+                      {value.product_contents
+                        .split(". ")
+                        .map((content: string, index: number) => {
+                          return <p key={index}>✔ {content}</p>;
+                        })}
                     </p>
                   </div>
                 </div>
