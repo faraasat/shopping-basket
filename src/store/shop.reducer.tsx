@@ -48,10 +48,11 @@ export const ShopSlice = createSlice({
   initialState: {
     storeData: initialStoreData,
     storeLoadingState: false,
+    cartData: initialStoreData,
   },
   reducers: {
-    getData(state, action): any {
-      return { data: state.storeData, loading: state.storeLoadingState };
+    addToCart: (state, action) => {
+      state.cartData.push(action.payload);
     },
   },
   extraReducers: {
@@ -71,9 +72,10 @@ export const ShopSlice = createSlice({
   },
 });
 
-export const { getData } = ShopSlice.actions;
+export const { addToCart } = ShopSlice.actions;
 
 export const selectStoreData = (state: any) => ({
   data: state.shopData.storeData,
   loading: state.shopData.storeLoadingState,
+  cart: state.shopData.cartData,
 });

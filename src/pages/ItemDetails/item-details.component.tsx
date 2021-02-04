@@ -5,9 +5,9 @@ import {
   MDBView,
 } from "mdbreact";
 import { Container, Icon } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectStoreData } from "../../store/shop.reducer";
+import { selectStoreData, addToCart } from "../../store/shop.reducer";
 import "./item-details.styles.css";
 import HomeIcon from "@material-ui/icons/ArrowForward";
 import PlusIcon from "@material-ui/icons/Add";
@@ -21,8 +21,9 @@ import {
 
 const ItemDetailsComponent = () => {
   const { exploreItemId } = useParams();
-  const { data, loading } = useSelector(selectStoreData);
+  const { data, loading, cart } = useSelector(selectStoreData);
   const [itemNumber, setItemNumber] = useState<number>(1);
+  const dispatch = useDispatch();
 
   if (loading) return <h1>Loading...</h1>;
 
@@ -31,9 +32,9 @@ const ItemDetailsComponent = () => {
     setItemNumber(itemNumber - 1);
   };
 
-  const handleAddCart = () => {
-    console.log(itemNumber);
-    setItemNumber(1);
+  const handleAddCart = (shopData: any) => {
+    dispatch(addToCart(shopData));
+    console.log(cart, "hello");
   };
 
   return (
@@ -89,7 +90,7 @@ const ItemDetailsComponent = () => {
                           </button>
                         </div>
                         <div className="item-details-inner__item-cart__btn">
-                          <button onClick={() => handleAddCart()}>
+                          <button onClick={() => handleAddCart(value)}>
                             Add To Cart&nbsp;&nbsp;
                             <FontAwesomeIcon icon={faCartPlus} />
                           </button>
