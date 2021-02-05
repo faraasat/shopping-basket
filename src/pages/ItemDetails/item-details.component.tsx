@@ -4,7 +4,7 @@ import {
   MDBCarouselItem,
   MDBView,
 } from "mdbreact";
-import { Container, Icon } from "@material-ui/core";
+import { CircularProgress, Container, Icon } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { selectStoreData, addToCart } from "../../store/shop.reducer";
@@ -18,14 +18,29 @@ import {
   faCartPlus,
   faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ItemDetailsComponent = () => {
   const { exploreItemId } = useParams();
-  const { data, loading, cart } = useSelector(selectStoreData);
+  const { data, loading, cartData } = useSelector(selectStoreData);
   const [itemNumber, setItemNumber] = useState<number>(1);
   const dispatch = useDispatch();
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading)
+    return (
+      <h1
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <CircularProgress />
+      </h1>
+    );
 
   const handleMinus = (itemNumber: number) => {
     if (itemNumber === 1) return;
@@ -33,10 +48,21 @@ const ItemDetailsComponent = () => {
   };
 
   const handleAddCart = (shopData: any) => {
-    dispatch(addToCart(shopData));
-    console.log(cart, "hello");
+    dispatch(addToCart({ ...shopData, quantity: itemNumber }));
+    toast("🦄 Added to Cart!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    setItemNumber(1);
+    if (loading) return "loading";
   };
 
+  console.log(cartData);
   return (
     <div className="item-details__alignment">
       {Object.entries(data)
@@ -58,9 +84,7 @@ const ItemDetailsComponent = () => {
                       className="z-depth-1"
                     >
                       <MDBCarouselInner>
-                        {console.log(images)}
                         {images.map((img: any, index: number) => {
-                          console.log(img, index);
                           return (
                             <MDBCarouselItem key={index} itemId={index + 1}>
                               <MDBView>
@@ -131,10 +155,6 @@ const ItemDetailsComponent = () => {
                       <span>Availability: </span>
                       {value.product_available_inventory}
                     </p>
-                    {/* <p className="item-details-inner__details-rating">
-                      <span>Ratings: </span>
-                      {value.product_rating}
-                    </p> */}
                     <p className="item-details-inner__details-model">
                       <span>Model Number: </span>
                       {value.product_model_number
@@ -159,6 +179,7 @@ const ItemDetailsComponent = () => {
             </div>
           );
         })}
+      <ToastContainer />
     </div>
   );
 };

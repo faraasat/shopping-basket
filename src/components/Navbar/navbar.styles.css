@@ -1,0 +1,89 @@
+.navbar-component-menu__screen {
+  height: 600px !important;
+}
+
+.navbar-component-menu__screen * {
+  padding: 0;
+  margin: 0;
+  overflow: hidden !important;
+  outline: none !important;
+  border: none !important;
+}
+
+.navbar-component-menu__screen__no-item {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+  cursor: pointer;
+}
+
+.navbar-component-menu__screen .MuiPaper-root {
+  top: 50px !important;
+}
+
+.navbar-component-menu__screen__no-item svg {
+  font-size: 80px;
+  margin-bottom: 20px;
+  color: rgb(169, 215, 255);
+}
+
+.navbar-component-menu__screen__no-item h4 {
+  font-weight: bold;
+  color: rgb(0, 136, 255);
+}
+
+.navbar-component-menu__screen__some-items {
+  height: 500px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 25px;
+  cursor: pointer;
+}
+
+.navbar-component-menu__screen__some-items__style {
+    overflow-y: auto !important;
+    padding-right: 10px;
+}
+
+.navbar-component-menu__screen__some-items span {
+    margin-top: 20px;
+    height: 100%;
+    justify-self: flex-start !important;
+}
+
+.navbar-component-menu__screen__some-items span img {
+    width: 100px;
+    height: 90px;
+}
+
+.navbar-component-menu__screen__some-items button {
+  background-image: linear-gradient(
+    to right,
+    #ff6e7f 0%,
+    #bfe9ff 51%,
+    #ff6e7f 100%
+  );
+  border: none;
+  outline: none;
+  margin: 10px;
+  padding: 15px 65px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.navbar-component-menu__screen__some-items button:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}

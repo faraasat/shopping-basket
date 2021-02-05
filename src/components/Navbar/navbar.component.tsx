@@ -18,15 +18,20 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import AppsIcon from "@material-ui/icons/Apps";
 import ExploreIcon from "@material-ui/icons/Explore";
 import { Icon } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import {
+  faExclamationTriangle,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { useSelector } from "react-redux";
+import { selectStoreData } from "../../store/shop.reducer";
+import "./navbar.styles.css";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -96,6 +101,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function NavbarComponent() {
   const classes = useStyles();
+  const { cartData } = useSelector(selectStoreData);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [
     mobileMoreAnchorEl,
@@ -127,14 +133,70 @@ export default function NavbarComponent() {
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
+      // id={menuId}
+      className="navbar-component-menu__screen"
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      style={{
+        height: 400,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {cartData.length === 1 && cartData[0].unique_id === "" ? (
+        <div className="navbar-component-menu__screen__no-item">
+          <FontAwesomeIcon icon={faExclamationTriangle} />
+          <h4>Ohhh! Nothing to Show.</h4>
+        </div>
+      ) : (
+        <span className="navbar-component-menu__screen__some-items">
+          <span className="navbar-component-menu__screen__some-items__style">
+            {cartData.product_image_url === "" ? (
+              <></>
+            ) : (
+              cartData.map((cart: any, index: number) => {
+                return (
+                  <MenuItem key={index}>
+                    <span style={{ padding: 0, margin: 0 }}>
+                      <img src={cart.product_image_url} alt="img" />
+                    </span>
+                    <span style={{ padding: 0, margin: 0 }}>
+                      <p>{cart.product_name.slice(0, 30) + "..."}</p>
+                      <span
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-evenly",
+                          alignItems: "flex-start",
+                          padding: 0,
+                          margin: 0,
+                        }}
+                      >
+                        <p>{"$" + cart.product_price}</p>
+                        <p>{cart.product_brand}</p>
+                      </span>
+                      <span
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-evenly",
+                          alignItems: "flex-start",
+                          padding: 0,
+                          margin: 0,
+                        }}
+                      >
+                        <p>{"quantity: " + cart.quantity}</p>
+                      </span>
+                    </span>
+                  </MenuItem>
+                );
+              })
+            )}
+          </span>
+          <button>View All Items</button>
+        </span>
+      )}
     </Menu>
   );
 
@@ -150,14 +212,6 @@ export default function NavbarComponent() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
@@ -172,9 +226,11 @@ export default function NavbarComponent() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <Badge badgeContent={5} color="secondary">
+            <AccountCircle />
+          </Badge>
         </IconButton>
-        <p>Profile</p>
+        <p>Cart</p>
       </MenuItem>
     </Menu>
   );
@@ -218,7 +274,7 @@ export default function NavbarComponent() {
               <Icon component={ExploreIcon} style={{ fontSize: 19 }} />
               &nbsp;Explore
             </Link>
-            <Link
+            {/* <Link
               to={"/categories"}
               style={{
                 color: "#fff",
@@ -229,7 +285,7 @@ export default function NavbarComponent() {
             >
               <Icon component={AppsIcon} style={{ fontSize: 19 }} />
               &nbsp;Categories
-            </Link>
+            </Link> */}
           </div>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -246,16 +302,6 @@ export default function NavbarComponent() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -264,7 +310,14 @@ export default function NavbarComponent() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <Badge badgeContent={5} color="secondary">
+                <ShoppingCartIcon />
+              </Badge>
+            </IconButton>
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={17} color="secondary">
+                <NotificationsIcon />
+              </Badge>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
