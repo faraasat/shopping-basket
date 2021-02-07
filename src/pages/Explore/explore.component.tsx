@@ -22,8 +22,6 @@ const ExploreComponent = () => {
   //   }, 2000);
   // }, [reducedData, loadNumber]);
 
-  //Hello World
-
   if (loading)
     return (
       <div
