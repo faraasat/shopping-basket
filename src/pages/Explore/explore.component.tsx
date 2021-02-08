@@ -9,18 +9,18 @@ import "./explore.styles.css";
 
 const ExploreComponent = () => {
   const { data, loading } = useSelector(selectStoreData);
-  // const [prevNumber, setPrevNumber] = useState(0);
-  // const [loadNumber, setLoadNumber] = useState(9);
-  // let reducedData = initialStoreData;
+  const [prevNumber, setPrevNumber] = useState(0);
+  const [loadNumber, setLoadNumber] = useState(9);
+  let reducedData = initialStoreData;
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (loadNumber === data.length) reducedData.push(data.splice(0, 9));
-  //     setPrevNumber(loadNumber);
-  //     setLoadNumber(loadNumber + 9);
-  //     console.log(reducedData);
-  //   }, 2000);
-  // }, [reducedData, loadNumber]);
+  useEffect(() => {
+    setTimeout(() => {
+      if (loadNumber === data.length) reducedData.push(data.splice(0, 9));
+      setPrevNumber(loadNumber);
+      setLoadNumber(loadNumber + 9);
+      console.log(reducedData);
+    }, 2000);
+  }, [reducedData, loadNumber]);
 
   if (loading)
     return (
