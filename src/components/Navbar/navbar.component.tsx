@@ -274,18 +274,6 @@ export default function NavbarComponent() {
               <Icon component={ExploreIcon} style={{ fontSize: 19 }} />
               &nbsp;Explore
             </Link>
-            {/* <Link
-              to={"/categories"}
-              style={{
-                color: "#fff",
-                fontWeight: "bold",
-                textDecoration: "none",
-                marginLeft: 10,
-              }}
-            >
-              <Icon component={AppsIcon} style={{ fontSize: 19 }} />
-              &nbsp;Categories
-            </Link> */}
           </div>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -310,12 +298,12 @@ export default function NavbarComponent() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <Badge badgeContent={5} color="secondary">
+              <Badge badgeContent={cartData.length - 1} color="secondary">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>

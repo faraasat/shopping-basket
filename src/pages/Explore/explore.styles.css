@@ -4,3 +4,24 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
+.explore-items__page-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.explore-items__page-numbers li {
+  list-style: none !important;
+  cursor: pointer;
+  margin: 0px 1px;
+  background-color: rgb(104, 138, 161);
+  padding: 7px 15px;
+  font-weight: bold;
+  border: 1px solid green;
+  font-family: 'Potta One', cursive;
+  color: rgb(255, 255, 255);
+}

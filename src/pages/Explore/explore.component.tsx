@@ -1,4 +1,5 @@
 import { CircularProgress, Container } from "@material-ui/core";
+import { useState } from "react";
 // import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ExploreCardComponent from "../../components/ExploreCards/explore-card.component";
@@ -9,18 +10,11 @@ import "./explore.styles.css";
 
 const ExploreComponent = () => {
   const { data, loading } = useSelector(selectStoreData);
-  const [prevNumber, setPrevNumber] = useState(0);
-  const [loadNumber, setLoadNumber] = useState(9);
-  let reducedData = initialStoreData;
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (loadNumber === data.length) reducedData.push(data.splice(0, 9));
-      setPrevNumber(loadNumber);
-      setLoadNumber(loadNumber + 9);
-      console.log(reducedData);
-    }, 2000);
-  }, [reducedData, loadNumber]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemPerPage] = useState(30);
+  const indexOfLastItem = currentPage * itemPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemPerPage;
+  const currentItem = data.slice(indexOfFirstItem, indexOfLastItem);
 
   if (loading)
     return (
@@ -37,24 +31,67 @@ const ExploreComponent = () => {
       </div>
     );
 
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(data.length / itemPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const handleClick = (event: any) => {
+    setCurrentPage(Number(event.target.id));
+    window.scrollTo(0, 0);
+  };
+
+  const handleBackClick = () => {
+    if (currentPage === 1) return;
+    setCurrentPage(currentPage - 1);
+    window.scrollTo(0, 0);
+  };
+
+  const handleForwardClick = () => {
+    if (currentPage === pageNumbers.length) return;
+    setCurrentPage(currentPage + 1);
+    window.scrollTo(0, 0);
+  };
+
+  const renderItems = currentItem.map((datum: IStoreData) => {
+    return (
+      <ExploreCardComponent
+        key={datum.unique_id}
+        title={datum.product_name}
+        Img={datum.product_image_url.split("|")[0]}
+        details={datum.product_description}
+        id={datum.unique_id}
+      />
+    );
+  });
+
+  const renderPageNumbers = pageNumbers.map((number) => {
+    return (
+      <>
+        <li
+          key={number}
+          id={String(number)}
+          onClick={(event) => handleClick(event)}
+        >
+          {number}
+        </li>
+      </>
+    );
+  });
+
   return (
-    <section className="explore-page-section-alignment">
-      <Container>
-        <div className="explore-page-card-alignment">
-          {data.map((datum: IStoreData) => {
-            return (
-              <ExploreCardComponent
-                key={datum.unique_id}
-                title={datum.product_name}
-                Img={datum.product_image_url.split("|")[0]}
-                details={datum.product_description}
-                id={datum.unique_id}
-              />
-            );
-          })}
-        </div>
-      </Container>
-    </section>
+    <div>
+      <section className="explore-page-section-alignment">
+        <Container>
+          <div className="explore-page-card-alignment">{renderItems}</div>
+        </Container>
+      </section>
+      <div className="explore-items__page-numbers">
+        <li onClick={() => handleBackClick()}>{"<<"}</li>
+        {renderPageNumbers}
+        <li onClick={() => handleForwardClick()}>{">>"}</li>
+      </div>
+    </div>
   );
 };
 

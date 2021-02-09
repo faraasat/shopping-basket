@@ -12,7 +12,7 @@ import "./item-details.styles.css";
 import HomeIcon from "@material-ui/icons/ArrowForward";
 import PlusIcon from "@material-ui/icons/Add";
 import MinusIcon from "@material-ui/icons/Remove";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartPlus,
@@ -22,6 +22,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ItemDetailsComponent = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { exploreItemId } = useParams();
   const { data, loading, cartData } = useSelector(selectStoreData);
   const [itemNumber, setItemNumber] = useState<number>(1);
