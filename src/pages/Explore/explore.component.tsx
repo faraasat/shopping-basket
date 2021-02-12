@@ -15,6 +15,9 @@ const ExploreComponent = () => {
   const indexOfLastItem = currentPage * itemPerPage;
   const indexOfFirstItem = indexOfLastItem - itemPerPage;
   const currentItem = data.slice(indexOfFirstItem, indexOfLastItem);
+  const pageNumberClass: any = document.getElementsByClassName(
+    "btn-native-color"
+  );
 
   if (loading)
     return (
@@ -66,15 +69,28 @@ const ExploreComponent = () => {
   });
 
   const renderPageNumbers = pageNumbers.map((number) => {
+    pageNumberClass?.classList?.remove("btn-active-color");
     return (
       <>
-        <li
-          key={number}
-          id={String(number)}
-          onClick={(event) => handleClick(event)}
-        >
-          {number}
-        </li>
+        {number === currentPage ? (
+          <li
+            className="btn-native-color btn-active-color"
+            key={number}
+            id={String(number)}
+            onClick={(event) => handleClick(event)}
+          >
+            {number}
+          </li>
+        ) : (
+          <li
+            className="btn-native-color"
+            key={number}
+            id={String(number)}
+            onClick={(event) => handleClick(event)}
+          >
+            {number}
+          </li>
+        )}
       </>
     );
   });

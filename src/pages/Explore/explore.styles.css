@@ -22,6 +22,11 @@
   padding: 7px 15px;
   font-weight: bold;
   border: 1px solid green;
+  border-radius: 4px;
   font-family: 'Potta One', cursive;
   color: rgb(255, 255, 255);
+}
+
+.btn-active-color {
+  background-color: orange !important;
 }
